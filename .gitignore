@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtualenvs
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Generated outputs (eval results stay tracked; ad-hoc CLI runs do not)
+model.json
+model.md
+model-*.json
+model-*.md
+threat_model.json
+threat_model.md
+
+# Security tooling
+bandit-report.json
+semgrep-report.json
+pip-audit-report.json
+
+# LaTeX intermediates
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.dvi
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk

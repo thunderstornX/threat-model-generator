@@ -1,0 +1,32 @@
+{
+  "title": "threat-model-generator: Deterministic STRIDE threat-model generation from YAML system descriptions, with optional LLM augmentation and OWASP Threat Dragon export",
+  "description": "A Python CLI that consumes a YAML system description (components, trust boundaries, data flows, external entities) and produces a STRIDE threat model in two outputs: a human-readable Markdown report and a JSON document compatible with the OWASP Threat Dragon v2 schema. The default deterministic mode generates threats from a curated rule catalogue (one set per component_type per STRIDE category) and is fully reproducible offline; an optional LLM-augmentation step routes the system description to either Anthropic Claude or a local Ollama model with three-step graceful fallback, mirroring the design used by the companion ai-governance-checker repo. Includes 5 expert-curated benchmark system descriptions (web app, API gateway, IoT device, mobile app, microservices) with hand-labelled expected (component, STRIDE-category) pairs and a precision/recall harness that reports real measured numbers on the rules-only path.",
+  "creators": [
+    {
+      "name": "Bhutto, Ali Murtaza",
+      "orcid": "0009-0007-2787-943X",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "threat modeling",
+    "STRIDE",
+    "OWASP Threat Dragon",
+    "secure SDLC",
+    "AI-assisted security",
+    "data flow diagram",
+    "Pydantic"
+  ],
+  "communities": [
+    {"identifier": "ai-safety"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/thunderstornX/threat-model-generator",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "upload_type": "software"
+}
