@@ -1,0 +1,27 @@
+{
+  "_note": "Expert-labelled pairs for the SensorMeshNode benchmark. RF metadata leakage is the headline disclosure risk; OTA tampering is the headline supply-chain risk.",
+  "expected_pairs": [
+    ["field_node",        "S"],
+    ["field_node",        "T"],
+    ["field_node",        "I"],
+    ["field_node",        "D"],
+    ["field_node",        "E"],
+
+    ["ingest_api",        "S"],
+    ["ingest_api",        "T"],
+    ["ingest_api",        "R"],
+    ["ingest_api",        "I"],
+    ["ingest_api",        "D"],
+    ["ingest_api",        "E"],
+
+    ["telemetry_storage", "T"],
+    ["telemetry_storage", "I"],
+    ["telemetry_storage", "E"],
+
+    ["ota_service",       "S"],
+    ["ota_service",       "T"],
+    ["ota_service",       "I"],
+    ["ota_service",       "D"],
+    ["ota_service",       "E"]
+  ]
+}

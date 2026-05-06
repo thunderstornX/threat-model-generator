@@ -1,0 +1,48 @@
+# Benchmark 1: classic three-tier web application.
+#
+# Reflects the canonical "browser → web frontend → API → database"
+# topology that Shostack 2014 ch. 1 walks through.
+name: ExampleShop
+description: >-
+  A small e-commerce web application: SPA frontend, REST API, primary
+  database, and an external payment provider for charge processing.
+components:
+  - name: storefront
+    type: web_frontend
+    sensitivity: confidential
+    description: Customer-facing SPA (browser-side checkout flow)
+  - name: orders_api
+    type: api
+    sensitivity: confidential
+    description: Order placement, lookup, and refund endpoints
+  - name: orders_db
+    type: database
+    sensitivity: restricted
+    description: PostgreSQL primary holding orders + customer PII
+  - name: payment_provider
+    type: external_service
+    sensitivity: restricted
+    description: Third-party payment processor (e.g. Stripe-style)
+trust_boundaries:
+  - name: public_internet
+    inside: [storefront, payment_provider]
+  - name: vpc
+    inside: [orders_api, orders_db]
+data_flows:
+  - source: storefront
+    destination: orders_api
+    protocol: HTTPS
+    sensitivity: confidential
+  - source: orders_api
+    destination: orders_db
+    protocol: TLS
+    sensitivity: restricted
+  - source: orders_api
+    destination: payment_provider
+    protocol: HTTPS
+    sensitivity: restricted
+external_entities:
+  - name: customer
+    description: End user placing an order
+  - name: support_admin
+    description: Internal support staff using a separate admin app

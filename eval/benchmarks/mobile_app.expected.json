@@ -1,0 +1,29 @@
+{
+  "_note": "Expert-labelled pairs for the PocketBank benchmark. Mobile EoP via deep-link hijack is in scope. Repudiation on the mobile client is INTENTIONALLY excluded — client-side telemetry signing is a stretch goal, not a baseline expectation, for most banking apps.",
+  "expected_pairs": [
+    ["mobile_client",     "S"],
+    ["mobile_client",     "T"],
+    ["mobile_client",     "I"],
+    ["mobile_client",     "E"],
+
+    ["bank_api",          "S"],
+    ["bank_api",          "T"],
+    ["bank_api",          "R"],
+    ["bank_api",          "I"],
+    ["bank_api",          "D"],
+    ["bank_api",          "E"],
+
+    ["customer_db",       "S"],
+    ["customer_db",       "T"],
+    ["customer_db",       "R"],
+    ["customer_db",       "I"],
+    ["customer_db",       "D"],
+    ["customer_db",       "E"],
+
+    ["identity_provider", "S"],
+    ["identity_provider", "T"],
+    ["identity_provider", "I"],
+    ["identity_provider", "D"],
+    ["identity_provider", "E"]
+  ]
+}

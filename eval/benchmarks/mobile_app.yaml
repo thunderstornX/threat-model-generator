@@ -1,0 +1,45 @@
+# Benchmark 4: mobile-first banking-style app.
+name: PocketBank
+description: >-
+  Mobile banking app: native iOS/Android client, REST API, customer
+  database, third-party identity verification at signup.
+components:
+  - name: mobile_client
+    type: mobile_client
+    sensitivity: restricted
+    description: Native iOS / Android app
+  - name: bank_api
+    type: api
+    sensitivity: restricted
+    description: Account, transfer, statement endpoints
+  - name: customer_db
+    type: database
+    sensitivity: restricted
+    description: Customer ledger + KYC records
+  - name: identity_provider
+    type: external_service
+    sensitivity: restricted
+    description: Third-party identity-verification (e.g. Onfido-style)
+trust_boundaries:
+  - name: device
+    inside: [mobile_client]
+  - name: vpc
+    inside: [bank_api, customer_db]
+  - name: third_party
+    inside: [identity_provider]
+data_flows:
+  - source: mobile_client
+    destination: bank_api
+    protocol: HTTPS+pinning
+    sensitivity: restricted
+  - source: bank_api
+    destination: customer_db
+    protocol: TLS
+    sensitivity: restricted
+  - source: bank_api
+    destination: identity_provider
+    protocol: HTTPS
+    sensitivity: restricted
+external_entities:
+  - name: customer
+    description: Bank customer using the app

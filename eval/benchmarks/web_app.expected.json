@@ -1,0 +1,27 @@
+{
+  "_note": "Expert-labelled (component, STRIDE-category) pairs that should be flagged for the ExampleShop benchmark. Conservative labelling: a pair is included only when an experienced reviewer would expect to see at least one finding there during a real engagement. The repudiation surface for an external payment provider is intentionally excluded because the audit-trail responsibility lives with the provider, not with the integrating system.",
+  "expected_pairs": [
+    ["storefront",       "S"],
+    ["storefront",       "T"],
+    ["storefront",       "I"],
+    ["storefront",       "E"],
+
+    ["orders_api",       "S"],
+    ["orders_api",       "T"],
+    ["orders_api",       "R"],
+    ["orders_api",       "I"],
+    ["orders_api",       "D"],
+    ["orders_api",       "E"],
+
+    ["orders_db",        "S"],
+    ["orders_db",        "T"],
+    ["orders_db",        "R"],
+    ["orders_db",        "I"],
+    ["orders_db",        "E"],
+
+    ["payment_provider", "S"],
+    ["payment_provider", "T"],
+    ["payment_provider", "I"],
+    ["payment_provider", "E"]
+  ]
+}

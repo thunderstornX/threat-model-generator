@@ -1,0 +1,46 @@
+# Benchmark 3: constrained IoT device with cloud back-haul.
+name: SensorMeshNode
+description: >-
+  A battery-powered LoRa-class IoT sensor reporting telemetry to a
+  small cloud back-end. Constrained: no full TLS, RF metadata
+  visible, limited audit budget.
+components:
+  - name: field_node
+    type: iot_device
+    sensitivity: confidential
+    description: Field-deployed sensor (sleep / wake / report cycle)
+  - name: ingest_api
+    type: api
+    sensitivity: confidential
+    description: Cloud telemetry ingestion endpoint
+  - name: telemetry_storage
+    type: storage
+    sensitivity: confidential
+    description: Object storage for raw telemetry archives
+  - name: ota_service
+    type: external_service
+    sensitivity: restricted
+    description: Third-party OTA update distribution
+trust_boundaries:
+  - name: rf_field
+    inside: [field_node]
+  - name: cloud
+    inside: [ingest_api, telemetry_storage]
+  - name: third_party
+    inside: [ota_service]
+data_flows:
+  - source: field_node
+    destination: ingest_api
+    protocol: LoRaWAN
+    sensitivity: confidential
+  - source: ingest_api
+    destination: telemetry_storage
+    protocol: HTTPS
+    sensitivity: confidential
+  - source: ota_service
+    destination: field_node
+    protocol: signed-OTA
+    sensitivity: restricted
+external_entities:
+  - name: site_operator
+    description: Human with physical access to the field node

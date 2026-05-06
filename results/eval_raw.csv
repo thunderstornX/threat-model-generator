@@ -1,0 +1,6 @@
+benchmark,n_components,universe,tp,fp,fn,tn,precision,recall,f1,accuracy,total_threats
+api_gateway,4,24,22,2,0,0,0.9167,1.0,0.9565,0.9167,24
+iot_device,4,24,19,5,0,0,0.7917,1.0,0.8837,0.7917,24
+microservices,6,36,30,6,0,0,0.8333,1.0,0.9091,0.8333,36
+mobile_app,4,24,21,3,0,0,0.875,1.0,0.9333,0.875,24
+web_app,4,24,19,5,0,0,0.7917,1.0,0.8837,0.7917,24

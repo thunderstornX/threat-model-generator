@@ -1,0 +1,30 @@
+{
+  "_note": "Expert-labelled pairs for the PublicAPIGateway benchmark. Auth service repudiation is in scope because login telemetry is itself security-relevant.",
+  "expected_pairs": [
+    ["gateway",      "S"],
+    ["gateway",      "T"],
+    ["gateway",      "R"],
+    ["gateway",      "I"],
+    ["gateway",      "D"],
+    ["gateway",      "E"],
+
+    ["auth",         "S"],
+    ["auth",         "T"],
+    ["auth",         "R"],
+    ["auth",         "I"],
+    ["auth",         "D"],
+    ["auth",         "E"],
+
+    ["tenant_db",    "S"],
+    ["tenant_db",    "T"],
+    ["tenant_db",    "R"],
+    ["tenant_db",    "I"],
+    ["tenant_db",    "E"],
+
+    ["events_queue", "S"],
+    ["events_queue", "T"],
+    ["events_queue", "I"],
+    ["events_queue", "D"],
+    ["events_queue", "E"]
+  ]
+}

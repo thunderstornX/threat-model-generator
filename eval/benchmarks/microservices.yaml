@@ -1,0 +1,58 @@
+# Benchmark 5: small microservices estate with event bus.
+name: OrdersPlatform
+description: >-
+  Microservices estate: orders, billing, notifications, async event
+  bus between them. Object storage for invoice PDFs.
+components:
+  - name: orders_svc
+    type: api
+    sensitivity: confidential
+    description: Order lifecycle service
+  - name: billing_svc
+    type: api
+    sensitivity: restricted
+    description: Charge / refund / dunning service
+  - name: notification_svc
+    type: api
+    sensitivity: internal
+    description: Outbound email / SMS notifications
+  - name: orders_db
+    type: database
+    sensitivity: confidential
+    description: Per-tenant orders database
+  - name: event_bus
+    type: queue
+    sensitivity: confidential
+    description: Async event bus between services
+  - name: invoice_storage
+    type: storage
+    sensitivity: confidential
+    description: Object storage for invoice PDFs
+trust_boundaries:
+  - name: vpc
+    inside: [orders_svc, billing_svc, notification_svc, orders_db,
+              event_bus, invoice_storage]
+data_flows:
+  - source: orders_svc
+    destination: orders_db
+    protocol: TLS
+    sensitivity: confidential
+  - source: orders_svc
+    destination: event_bus
+    protocol: AMQP-TLS
+    sensitivity: confidential
+  - source: billing_svc
+    destination: event_bus
+    protocol: AMQP-TLS
+    sensitivity: restricted
+  - source: notification_svc
+    destination: event_bus
+    protocol: AMQP-TLS
+    sensitivity: internal
+  - source: billing_svc
+    destination: invoice_storage
+    protocol: HTTPS
+    sensitivity: confidential
+external_entities:
+  - name: customer
+    description: End user placing orders

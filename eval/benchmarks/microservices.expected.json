@@ -1,0 +1,40 @@
+{
+  "_note": "Expert-labelled pairs for the OrdersPlatform benchmark. Notification_svc repudiation excluded (its outbound activity is logged at the bus, not at the service). Internal-sensitivity components (notification_svc) get fewer expected pairs because the threat model is dominated by upstream services that talk to PII.",
+  "expected_pairs": [
+    ["orders_svc",      "S"],
+    ["orders_svc",      "T"],
+    ["orders_svc",      "R"],
+    ["orders_svc",      "I"],
+    ["orders_svc",      "D"],
+    ["orders_svc",      "E"],
+
+    ["billing_svc",     "S"],
+    ["billing_svc",     "T"],
+    ["billing_svc",     "R"],
+    ["billing_svc",     "I"],
+    ["billing_svc",     "D"],
+    ["billing_svc",     "E"],
+
+    ["notification_svc","S"],
+    ["notification_svc","T"],
+    ["notification_svc","I"],
+    ["notification_svc","D"],
+
+    ["orders_db",       "S"],
+    ["orders_db",       "T"],
+    ["orders_db",       "R"],
+    ["orders_db",       "I"],
+    ["orders_db",       "D"],
+    ["orders_db",       "E"],
+
+    ["event_bus",       "S"],
+    ["event_bus",       "T"],
+    ["event_bus",       "I"],
+    ["event_bus",       "D"],
+    ["event_bus",       "E"],
+
+    ["invoice_storage", "T"],
+    ["invoice_storage", "I"],
+    ["invoice_storage", "E"]
+  ]
+}

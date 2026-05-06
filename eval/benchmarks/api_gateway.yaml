@@ -1,0 +1,44 @@
+# Benchmark 2: API gateway fronting a microservices estate.
+name: PublicAPIGateway
+description: >-
+  An API gateway exposing internal microservices to third-party
+  developers. Authn/z via dedicated auth service; per-tenant rate
+  limits enforced at the gateway.
+components:
+  - name: gateway
+    type: api
+    sensitivity: confidential
+    description: Request routing, auth check, rate limiting
+  - name: auth
+    type: auth_service
+    sensitivity: restricted
+    description: Issues and validates short-lived bearer tokens
+  - name: tenant_db
+    type: database
+    sensitivity: restricted
+    description: Tenant + subscription registry
+  - name: events_queue
+    type: queue
+    sensitivity: confidential
+    description: Outbox stream for downstream consumers
+trust_boundaries:
+  - name: public_internet
+    inside: []
+  - name: vpc
+    inside: [gateway, auth, tenant_db, events_queue]
+data_flows:
+  - source: gateway
+    destination: auth
+    protocol: gRPC-TLS
+    sensitivity: confidential
+  - source: gateway
+    destination: tenant_db
+    protocol: TLS
+    sensitivity: restricted
+  - source: gateway
+    destination: events_queue
+    protocol: AMQP-TLS
+    sensitivity: confidential
+external_entities:
+  - name: third_party_developer
+    description: API consumer who has registered for a key
