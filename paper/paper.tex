@@ -267,7 +267,12 @@ Recall is perfect by construction. The catalogue covers all six
 STRIDE categories for every supported component type, so for any
 pair an expert flagged we emit at least one threat. The
 question is not ``did we miss anything'' but ``did we emit too
-much'', and that is what precision measures. The 21 false positives
+much'', and that is what precision measures. Note that because the
+rules-only catalogue emits a candidate threat for every
+(component, STRIDE) pair, there are no true negatives by
+construction; accuracy therefore degenerates to precision (both
+0.8409) and is reported in the table only for completeness ---
+precision and $F_1$ are the informative metrics here. The 21 false positives
 cluster around three regions: repudiation on third-party services
 (the integrator can log outbound calls but cannot meaningfully audit
 the third party's behaviour), denial of service on
