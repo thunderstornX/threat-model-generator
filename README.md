@@ -16,8 +16,6 @@
 [![Eval F1](https://img.shields.io/badge/F1%20%28rules--only%29-0.9136-brightgreen)](results/README.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20480460.svg)](https://doi.org/10.5281/zenodo.20480460)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Zenodo](https://img.shields.io/badge/zenodo-DOI%20pending-9cf)](.zenodo.json)
-
 `threat-model-generator` reads a YAML system description and emits a
 **STRIDE threat model** in two formats: a human-readable Markdown
 report and a JSON document compatible with the
