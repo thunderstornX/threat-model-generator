@@ -9,7 +9,7 @@
      ╚═╝   ╚═╝     ╚═╝ ╚═════╝
 ```
 
-[![Tests](https://img.shields.io/badge/pytest-61%2F61%20passing-brightgreen)](#testing)
+[![tests](https://github.com/thunderstornX/threat-model-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/thunderstornX/threat-model-generator/actions/workflows/tests.yml)
 [![Bandit](https://img.shields.io/badge/bandit-0%20issues-brightgreen)](results/security_scan.md)
 [![pip-audit](https://img.shields.io/badge/pip--audit-0%20vulns-brightgreen)](results/security_scan.md)
 [![Semgrep](https://img.shields.io/badge/semgrep-0%20findings-brightgreen)](results/security_scan.md)
